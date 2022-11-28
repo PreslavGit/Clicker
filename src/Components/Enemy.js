@@ -2,13 +2,14 @@ import React from "react"
 
 const Enemy = () => {
     let enemySize = 400
-    let bit = enemySize / 20
+    let bit = enemySize / 10
+
     const canvas = React.useRef();
 
     let specials = {
         gold:{
             chanceToRender: 1,
-            chanceToSpread: 20,
+            chanceToSpread: 90,
             color: "gold", 
             priority: 10
         }
@@ -84,7 +85,7 @@ const Enemy = () => {
 
         function recurse(type, point){
             //Base case
-            if(toCheck.length === 0 || specialCount > 10000){
+            if(toCheck.length === 0 || specialCount > Math.pow((enemySize/bit), 2)){
                 return 
             }
 

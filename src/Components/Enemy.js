@@ -1,34 +1,33 @@
 import React from "react"
 
-const Enemy = () => {
+const Enemy = ({setEnemyBits}) => {
     let enemySize = 400
     let bit = enemySize / 20
 
     const canvas = React.useRef();
 
-    let specials = {
-        gold: {
-            chanceToRender: 0.5,
-            chanceToSpread: 15,
-            color: "gold",
-            count: 0
-        },
-        xp: {
-            chanceToRender: 1,
-            chanceToSpread: 5,
-            color: "cyan",
-            count: 0
-        },
-        hp: {
-            chanceToRender: 3,
-            chanceToSpread: 5,
-            color: "darkred",
-            count: 0
-        }
-    }
-
-
+    //after rendering canvas, generate bits
     React.useEffect(() => {
+        let specials = {
+            gold: {
+                chanceToRender: 0.5,
+                chanceToSpread: 15,
+                color: "gold",
+                count: 0
+            },
+            xp: {
+                chanceToRender: 1,
+                chanceToSpread: 5,
+                color: "cyan",
+                count: 0
+            },
+            hp: {
+                chanceToRender: 3,
+                chanceToSpread: 5,
+                color: "darkred",
+                count: 0
+            }
+        }
 
         let ctx = canvas.current.getContext("2d", {
             willReadFrequently: true
@@ -156,9 +155,9 @@ const Enemy = () => {
         for (const special in specials) {
             console.log(`${special}: `,specials[special].count);
         }
+        setEnemyBits(specials)
+    },[bit, enemySize, setEnemyBits])
 
-    }
-    )
 
     return (
         <canvas width={`${enemySize}px`} height={`${enemySize}px`} id="enemyCanvas" ref={canvas}></canvas>

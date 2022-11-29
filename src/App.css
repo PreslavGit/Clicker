@@ -1,5 +1,18 @@
-body{
+body {
   background-color: rgb(12, 41, 14);
   margin: 0;
   padding: 0;
+}
+
+.App {
+  margin: auto;
+  margin-top: 10vh;
+  width: 40%;
+  text-align: center;
+}
+
+.printBits {
+  color: bisque;
+  font-weight: bolder;
+  text-transform: uppercase;
 }
